@@ -4,7 +4,7 @@
     "name": "[PROJECT] BookstoreAPI",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "createdAt": "2026-02-13T10:34:19.000Z",
-    "updatedAt": "2026-02-19T09:01:35.000Z",
+    "updatedAt": "2026-02-21T16:18:39.000Z",
     "lastUpdatedBy": "2470668",
     "uid": "2470668-40365cb8-20ff-4a56-b033-ab6725f09595"
   },
@@ -1034,10 +1034,10 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "87abf9dc-d2d1-4597-9764-f2a014db873f",
+                        "id": "2ee59d14-6872-4630-886f-7b95a6767ce5",
                         "exec": [
-                          "const randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\");\r",
-                          "const randomLastName = pm.variables.replaceIn(\"{{$randomLastName}}\");\r",
+                          "const randomFirstName = AuthorUtils.getRandomFirstName();\r",
+                          "const randomLastName = AuthorUtils.getRandomLastName();\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomFirstName\", randomFirstName);\r",
                           "\r",
@@ -1050,7 +1050,7 @@
                     {
                       "listen": "test",
                       "script": {
-                        "id": "7d7e5370-dcbe-4b12-836e-434261837a4e",
+                        "id": "9d9ecdbe-cc53-4278-8789-e5277a7d7abe",
                         "exec": [
                           "pm.test(\"Should return status code 201\", function () {\r",
                           "    pm.response.to.have.status(201);\r",
@@ -1139,7 +1139,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-14T13:14:54.000Z",
-                  "updatedAt": "2026-02-17T11:38:55.000Z",
+                  "updatedAt": "2026-02-21T17:17:19.000Z",
                   "uid": "2470668-7a14e644-2b8b-4873-bd44-a00c2fa4432b"
                 },
                 {
@@ -1269,21 +1269,20 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "b7d95408-7bca-4c1f-a6c1-6c39cd9a0454",
                         "exec": [
-                          "const randomLastName = pm.variables.replaceIn(\"{{$randomLastName}}\");\r",
+                          "const randomLastName = AuthorUtils.getRandomLastName();\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomLastName\", randomLastName);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "444d3249-2df0-4720-85c4-71753819ddd7",
                         "exec": [
                           "pm.test(\"Should return status code 201\", function () {\r",
                           "    pm.response.to.have.status(201);\r",
@@ -1344,8 +1343,7 @@
                           "});"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -1377,7 +1375,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-15T16:11:30.000Z",
-                  "updatedAt": "2026-02-16T12:29:41.000Z",
+                  "updatedAt": "2026-02-21T17:17:07.000Z",
                   "uid": "2470668-96fb05c1-f46b-4aa0-b796-185c021bf9c2"
                 },
                 {
@@ -1386,21 +1384,20 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "38339672-1f75-473d-95d4-7aeb6fa2facb",
                         "exec": [
-                          "const randomLastName = pm.variables.replaceIn(\"{{$randomLastName}}\");\r",
+                          "const randomLastName = AuthorUtils.getRandomLastName();\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomLastName\", randomLastName);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "36f946d0-c7e5-41dc-ba1a-e622efa976cc",
                         "exec": [
                           "pm.test(\"Should return status code 201\", function () {\r",
                           "    pm.response.to.have.status(201);\r",
@@ -1461,8 +1458,7 @@
                           "});"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -1494,7 +1490,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-16T11:08:53.000Z",
-                  "updatedAt": "2026-02-16T12:30:46.000Z",
+                  "updatedAt": "2026-02-21T17:17:02.000Z",
                   "uid": "2470668-d54a88b4-720d-421f-86a3-98a3b976d8b8"
                 },
                 {
@@ -1503,21 +1499,20 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "1db755fc-45a5-4f36-ac0d-d4797258b62d",
                         "exec": [
-                          "const randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\");\r",
+                          "const randomFirstName = AuthorUtils.getRandomFirstName();\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomFirstName\", randomFirstName);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "3a7eedcd-4bfd-4519-a3ce-eec1e307863b",
                         "exec": [
                           "pm.test(\"Should return status code 201\", function () {\r",
                           "    pm.response.to.have.status(201);\r",
@@ -1578,8 +1573,7 @@
                           "});"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -1611,7 +1605,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-16T11:05:37.000Z",
-                  "updatedAt": "2026-02-16T12:30:00.000Z",
+                  "updatedAt": "2026-02-21T17:17:37.000Z",
                   "uid": "2470668-31207607-f68a-4bac-aae7-64434a86e512"
                 },
                 {
@@ -1620,21 +1614,20 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "2ae3cc72-8ba4-4d82-8dc0-cc3f4392025d",
                         "exec": [
-                          "const randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\");\r",
+                          "const randomFirstName = AuthorUtils.getRandomFirstName();\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomFirstName\", randomFirstName);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "55b1ac4c-d184-4812-8b6e-db7826510a84",
                         "exec": [
                           "pm.test(\"Should return status code 201\", function () {\r",
                           "    pm.response.to.have.status(201);\r",
@@ -1695,8 +1688,7 @@
                           "});"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -1728,7 +1720,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-16T11:08:47.000Z",
-                  "updatedAt": "2026-02-16T12:30:37.000Z",
+                  "updatedAt": "2026-02-21T17:17:52.000Z",
                   "uid": "2470668-b20a34b1-ab60-41ee-bcf5-3e7484100fb5"
                 }
               ],
@@ -1746,21 +1738,20 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "d0eeee46-3c31-4285-b04f-a27620c9f6fc",
                         "exec": [
-                          "const randomLastName = pm.variables.replaceIn(\"{{$randomLastName}}\");\r",
+                          "const randomLastName = AuthorUtils.getRandomLastName();\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomLastName\", randomLastName);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "93787c88-53c6-4990-8851-9eb21888f72d",
                         "exec": [
                           "pm.test(\"Should return status code 400\", function () {\r",
                           "    pm.response.to.have.status(400);\r",
@@ -1847,8 +1838,7 @@
                           "// pm.collectionVariables.set(\"colAuthorId\", author.id);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -1880,7 +1870,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-15T11:20:56.000Z",
-                  "updatedAt": "2026-02-16T12:10:12.000Z",
+                  "updatedAt": "2026-02-21T17:18:24.000Z",
                   "uid": "2470668-b741e332-1603-4452-91ba-7af42db55115"
                 },
                 {
@@ -1889,21 +1879,20 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "f73a7891-50a8-4b5a-bcf6-7ca1bc9f4dfa",
                         "exec": [
-                          "const randomLastName = pm.variables.replaceIn(\"{{$randomLastName}}\");\r",
+                          "const randomLastName = AuthorUtils.getRandomLastName();\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomLastName\", randomLastName);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "e6149e6f-b789-41a5-912a-207363583510",
                         "exec": [
                           "pm.test(\"Should return status code 400\", function () {\r",
                           "    pm.response.to.have.status(400);\r",
@@ -1990,8 +1979,7 @@
                           "// pm.collectionVariables.set(\"colAuthorId\", author.id);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -2023,7 +2011,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-15T11:41:49.000Z",
-                  "updatedAt": "2026-02-16T12:10:14.000Z",
+                  "updatedAt": "2026-02-21T17:18:35.000Z",
                   "uid": "2470668-f584f064-66bb-4a63-a0f3-21f6a374f131"
                 },
                 {
@@ -2032,21 +2020,20 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "887afaca-425a-4331-9026-805505429b7c",
                         "exec": [
-                          "const randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\");\r",
+                          "const randomFirstName = AuthorUtils.getRandomFirstName();\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomFirstName\", randomFirstName);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "f40840a1-4f25-44a2-ac1e-956b1ae64dc2",
                         "exec": [
                           "pm.test(\"Should return status code 400\", function () {\r",
                           "    pm.response.to.have.status(400);\r",
@@ -2133,8 +2120,7 @@
                           "// pm.collectionVariables.set(\"colAuthorId\", author.id);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -2166,7 +2152,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-15T11:22:42.000Z",
-                  "updatedAt": "2026-02-16T12:10:16.000Z",
+                  "updatedAt": "2026-02-21T17:18:53.000Z",
                   "uid": "2470668-59cf82ce-224a-4deb-9478-44078a8358e8"
                 },
                 {
@@ -2175,22 +2161,21 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "99fec0ca-d2cc-47b6-8ca9-c6f1be47bf77",
                         "exec": [
-                          "const randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\");\r",
+                          "const randomFirstName = AuthorUtils.getRandomFirstName();\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomFirstName\", randomFirstName);\r",
                           ""
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "7c98d52f-c931-4252-92c7-b9aed11e8a48",
                         "exec": [
                           "pm.test(\"Should return status code 400\", function () {\r",
                           "    pm.response.to.have.status(400);\r",
@@ -2277,8 +2262,7 @@
                           "// pm.collectionVariables.set(\"colAuthorId\", author.id);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -2310,7 +2294,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-15T12:04:08.000Z",
-                  "updatedAt": "2026-02-16T12:10:21.000Z",
+                  "updatedAt": "2026-02-21T17:19:09.000Z",
                   "uid": "2470668-e0880986-5e57-4e6b-a995-2146de0ec1b0"
                 },
                 {
@@ -3024,24 +3008,18 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "611279cf-ab2c-4ae4-a274-13083a5dec98",
                         "exec": [
-                          "// const randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\");\r",
-                          "// const randomLastName = pm.variables.replaceIn(\"{{$randomLastName}}\");\r",
-                          "\r",
-                          "// pm.collectionVariables.set(\"nonExistingFirstName\", randomFirstName);\r",
-                          "\r",
-                          "// pm.collectionVariables.set(\"nonExistingLastName\", randomLastName);"
+                          ""
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "10b743ff-29bf-480d-a27c-4609c1f42049",
                         "exec": [
                           "pm.test(\"Should return status code 400\", function () {\r",
                           "    pm.response.to.have.status(400);\r",
@@ -3128,8 +3106,7 @@
                           "// pm.collectionVariables.set(\"colAuthorId\", author.id);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -3161,7 +3138,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-15T10:52:05.000Z",
-                  "updatedAt": "2026-02-16T11:57:13.000Z",
+                  "updatedAt": "2026-02-21T17:20:05.000Z",
                   "uid": "2470668-3300614a-175b-4f1f-ac68-397cc08cdb85"
                 },
                 {
@@ -3170,24 +3147,18 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "a8be87e5-9985-4321-b3a4-a24eba92ab71",
                         "exec": [
-                          "// const randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\");\r",
-                          "// const randomLastName = pm.variables.replaceIn(\"{{$randomLastName}}\");\r",
-                          "\r",
-                          "// pm.collectionVariables.set(\"nonExistingFirstName\", randomFirstName);\r",
-                          "\r",
-                          "// pm.collectionVariables.set(\"nonExistingLastName\", randomLastName);"
+                          ""
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "e1c3f042-fb40-4619-b64e-332f6a0c7bab",
                         "exec": [
                           "pm.test(\"Should return status code 400\", function () {\r",
                           "    pm.response.to.have.status(400);\r",
@@ -3274,8 +3245,7 @@
                           "// pm.collectionVariables.set(\"colAuthorId\", author.id);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -3307,7 +3277,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-15T10:55:31.000Z",
-                  "updatedAt": "2026-02-16T11:57:17.000Z",
+                  "updatedAt": "2026-02-21T17:19:58.000Z",
                   "uid": "2470668-5ab83b3d-9e8b-4138-8f44-33c831ef5322"
                 },
                 {
@@ -3475,24 +3445,23 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "e11158fa-381d-4b51-91d3-121554667651",
                         "exec": [
-                          "const randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\");\r",
-                          "const randomLastName = pm.variables.replaceIn(\"{{$randomLastName}}\");\r",
+                          "const randomFirstName = AuthorUtils.getRandomFirstName();\r",
+                          "const randomLastName = AuthorUtils.getRandomLastName();\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomFirstName\", randomFirstName);\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomFirstName\", randomLastName);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "246a3f1c-cac5-42f6-a1d5-1605f3c995e6",
                         "exec": [
                           "pm.test(\"Should return status code 201\", function () {\r",
                           "    pm.response.to.have.status(201);\r",
@@ -3549,8 +3518,7 @@
                           "pm.collectionVariables.set(\"colAuthorId\", author.id);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -3582,7 +3550,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-15T13:30:46.000Z",
-                  "updatedAt": "2026-02-17T11:49:45.000Z",
+                  "updatedAt": "2026-02-21T17:20:59.000Z",
                   "uid": "2470668-09dd967b-7dbf-4ca0-afee-2c2dc0c73e3e"
                 },
                 {
@@ -3591,24 +3559,23 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "8269335d-6536-479a-b0ea-c4e7b3bb271f",
+                        "id": "f5262a7c-ce6d-4b48-b976-e9b5848b3604",
                         "exec": [
-                          "const randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\");\r",
-                          "const randomLastName = pm.variables.replaceIn(\"{{$randomLastName}}\");\r",
+                          "const randomFirstName = AuthorUtils.getRandomFirstName();\r",
+                          "const randomLastName = AuthorUtils.getRandomLastName();\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomFirstName\", randomFirstName);\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomLastName\", randomLastName);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "f899d20e-3594-4a95-a38a-5ec5925f80fd",
+                        "id": "572eb6e3-0104-4472-a53d-ea652df6e4c6",
                         "exec": [
                           "pm.test(\"Should return status code 200\", function () {\r",
                           "    pm.response.to.have.status(200);\r",
@@ -3657,8 +3624,7 @@
                           "});"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -3691,7 +3657,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-15T12:55:33.000Z",
-                  "updatedAt": "2026-02-17T11:51:03.000Z",
+                  "updatedAt": "2026-02-21T17:21:20.000Z",
                   "uid": "2470668-dd8ecee7-3888-47ad-a748-0d9ddc4373d9"
                 },
                 {
@@ -3771,24 +3737,23 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "876ad016-5f43-430b-84dc-1074eb092b19",
                         "exec": [
-                          "const randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\");\r",
-                          "const randomLastName = pm.variables.replaceIn(\"{{$randomLastName}}\");\r",
+                          "const randomFirstName = AuthorUtils.getRandomFirstName();\r",
+                          "const randomLastName = AuthorUtils.getRandomLastName();\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomFirstName\", randomFirstName);\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomFirstName\", randomLastName);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "a656c91d-a32c-4d42-b984-84997bac2c70",
                         "exec": [
                           "pm.test(\"Should return status code 201\", function () {\r",
                           "    pm.response.to.have.status(201);\r",
@@ -3845,8 +3810,7 @@
                           "pm.collectionVariables.set(\"colAuthorId\", author.id);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -3878,7 +3842,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-16T13:55:18.000Z",
-                  "updatedAt": "2026-02-16T13:55:27.000Z",
+                  "updatedAt": "2026-02-21T17:21:42.000Z",
                   "uid": "2470668-253491bb-3675-4c3c-b109-32433b4f1939"
                 },
                 {
@@ -3887,21 +3851,20 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "3cdc6d86-4d24-48b1-83c5-dbd427e89769",
                         "exec": [
-                          "const randomLastName = pm.variables.replaceIn(\"{{$randomLastName}}\");\r",
+                          "const randomLastName = AuthorUtils.getRandomLastName();\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomLastName\", randomLastName);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "e8f61729-261c-4093-90e3-fa12d114604f",
                         "exec": [
                           "pm.test(\"Should return status code 200\", function () {\r",
                           "    pm.response.to.have.status(200);\r",
@@ -3949,8 +3912,7 @@
                           "});"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -3983,7 +3945,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-16T13:55:32.000Z",
-                  "updatedAt": "2026-02-16T14:37:43.000Z",
+                  "updatedAt": "2026-02-21T17:22:08.000Z",
                   "uid": "2470668-08f9d1a5-d4a7-4708-9309-aeccbd33ef56"
                 },
                 {
@@ -3992,21 +3954,20 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "1ec38498-f981-4dc1-a6bc-4a33bc5bceff",
                         "exec": [
-                          "const randomLastName = pm.variables.replaceIn(\"{{$randomLastName}}\");\r",
+                          "const randomLastName = AuthorUtils.getRandomLastName();\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomLastName\", randomLastName);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "a3e0046f-7981-4b3d-a1a7-e6525a5a2a77",
                         "exec": [
                           "pm.test(\"Should return status code 200\", function () {\r",
                           "    pm.response.to.have.status(200);\r",
@@ -4054,8 +4015,7 @@
                           "});"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -4088,7 +4048,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-16T14:00:23.000Z",
-                  "updatedAt": "2026-02-16T14:37:47.000Z",
+                  "updatedAt": "2026-02-21T17:22:22.000Z",
                   "uid": "2470668-efa9dcfa-879c-49ad-add9-f9e56bbc32ec"
                 },
                 {
@@ -4097,21 +4057,20 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "1cc6f753-ec8c-48e6-a43f-6c01e4d921ac",
                         "exec": [
-                          "const randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\");\r",
+                          "const randomFirstName = AuthorUtils.getRandomFirstName();\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomFirstName\", randomFirstName);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "f65e3027-a26c-47c9-b148-6b4997a9b2bc",
                         "exec": [
                           "pm.test(\"Should return status code 200\", function () {\r",
                           "    pm.response.to.have.status(200);\r",
@@ -4160,8 +4119,7 @@
                           "});"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -4194,7 +4152,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-16T14:03:36.000Z",
-                  "updatedAt": "2026-02-16T14:37:51.000Z",
+                  "updatedAt": "2026-02-21T17:22:36.000Z",
                   "uid": "2470668-50c341e5-9eab-48d3-805b-ab86857a70a6"
                 },
                 {
@@ -4203,21 +4161,20 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "b0c278c6-0992-4d37-a846-2ecc396d3166",
                         "exec": [
-                          "const randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\");\r",
+                          "const randomFirstName = AuthorUtils.getRandomFirstName();\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomFirstName\", randomFirstName);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "db7c6e67-64d3-4753-ab90-4cff1e8cdad4",
                         "exec": [
                           "pm.test(\"Should return status code 200\", function () {\r",
                           "    pm.response.to.have.status(200);\r",
@@ -4266,8 +4223,7 @@
                           "});"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -4300,7 +4256,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-16T14:06:30.000Z",
-                  "updatedAt": "2026-02-16T14:37:54.000Z",
+                  "updatedAt": "2026-02-21T17:22:48.000Z",
                   "uid": "2470668-9d02d562-ab88-4273-904f-a5c4a8a83baa"
                 },
                 {
@@ -4380,24 +4336,23 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "00177584-ae7a-4280-b563-88b4e8170eea",
                         "exec": [
-                          "const randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\");\r",
-                          "const randomLastName = pm.variables.replaceIn(\"{{$randomLastName}}\");\r",
+                          "const randomFirstName = AuthorUtils.getRandomFirstName();\r",
+                          "const randomLastName = AuthorUtils.getRandomLastName();\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomFirstName\", randomFirstName);\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomLastName\", randomLastName);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "a712c462-f010-44f8-84a0-a21d19456e4f",
                         "exec": [
                           "pm.test(\"Should return status code 201\", function () {\r",
                           "    pm.response.to.have.status(201);\r",
@@ -4454,8 +4409,7 @@
                           "pm.collectionVariables.set(\"colAuthorId\", author.id);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -4487,7 +4441,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-15T12:55:18.000Z",
-                  "updatedAt": "2026-02-17T11:51:09.000Z",
+                  "updatedAt": "2026-02-21T17:23:11.000Z",
                   "uid": "2470668-3d949d56-10a0-4539-b190-73b566204657"
                 },
                 {
@@ -4496,21 +4450,18 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "5070f28e-7e18-4c8e-be37-9994549082a3",
                         "exec": [
-                          "// const randomLastName = pm.variables.replaceIn(\"{{$randomLastName}}\");\r",
-                          "\r",
-                          "// pm.collectionVariables.set(\"colRandomLastName\", randomLastName);"
+                          ""
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "3fa166f7-37e3-48dd-82cb-3b0ffcc5de2e",
                         "exec": [
                           "pm.test(\"Should return status code 400\", function () {\r",
                           "    pm.response.to.have.status(400);\r",
@@ -4597,8 +4548,7 @@
                           "// pm.collectionVariables.set(\"colAuthorId\", author.id);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -4631,7 +4581,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-16T14:15:31.000Z",
-                  "updatedAt": "2026-02-16T14:37:58.000Z",
+                  "updatedAt": "2026-02-21T17:23:21.000Z",
                   "uid": "2470668-978bfc6d-10de-492c-a8ad-736af09da0e2"
                 },
                 {
@@ -4640,21 +4590,18 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "5c6a9799-9d02-49a6-8e1a-b2cfb9fc2ac3",
                         "exec": [
-                          "// const randomLastName = pm.variables.replaceIn(\"{{$randomLastName}}\");\r",
-                          "\r",
-                          "// pm.collectionVariables.set(\"colRandomLastName\", randomLastName);"
+                          ""
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "cec21996-f7d2-4c83-9462-c5e8ec168479",
                         "exec": [
                           "pm.test(\"Should return status code 400\", function () {\r",
                           "    pm.response.to.have.status(400);\r",
@@ -4741,8 +4688,7 @@
                           "// pm.collectionVariables.set(\"colAuthorId\", author.id);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -4775,7 +4721,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-16T14:16:53.000Z",
-                  "updatedAt": "2026-02-16T14:38:00.000Z",
+                  "updatedAt": "2026-02-21T17:23:32.000Z",
                   "uid": "2470668-d82e36af-91da-49fa-bccf-5b07b6499ad4"
                 },
                 {
@@ -4784,21 +4730,18 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "11c9f06b-683d-4c59-bb58-0391826e086d",
                         "exec": [
-                          "// const randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\");\r",
-                          "\r",
-                          "// pm.collectionVariables.set(\"colRandomFirstName\", randomFirstName);"
+                          ""
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "bda45cbc-06a8-477e-af65-7e01c79a0f4a",
                         "exec": [
                           "pm.test(\"Should return status code 400\", function () {\r",
                           "    pm.response.to.have.status(400);\r",
@@ -4885,8 +4828,7 @@
                           "// pm.collectionVariables.set(\"colAuthorId\", author.id);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -4919,7 +4861,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-16T14:16:58.000Z",
-                  "updatedAt": "2026-02-16T14:38:03.000Z",
+                  "updatedAt": "2026-02-21T17:23:40.000Z",
                   "uid": "2470668-ed7ea7e8-b5a7-45b8-9210-53cb9a3c0fa5"
                 },
                 {
@@ -4928,22 +4870,18 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "604c8fda-eb82-4153-a9b3-43b9d10d6180",
                         "exec": [
-                          "// const randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\");\r",
-                          "\r",
-                          "// pm.collectionVariables.set(\"colRandomFirstName\", randomFirstName);\r",
                           ""
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "fe39a25f-a00b-4809-9596-7c92c33eee06",
                         "exec": [
                           "pm.test(\"Should return status code 400\", function () {\r",
                           "    pm.response.to.have.status(400);\r",
@@ -5030,8 +4968,7 @@
                           "// pm.collectionVariables.set(\"colAuthorId\", author.id);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -5064,7 +5001,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-16T14:17:00.000Z",
-                  "updatedAt": "2026-02-16T14:38:07.000Z",
+                  "updatedAt": "2026-02-21T17:23:51.000Z",
                   "uid": "2470668-35d62165-27c7-4b16-ad0d-e079020dc12b"
                 },
                 {
@@ -5783,24 +5720,18 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "acfe8d69-ea7d-4fd8-9df7-d2742de813d1",
                         "exec": [
-                          "// const randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\");\r",
-                          "// const randomLastName = pm.variables.replaceIn(\"{{$randomLastName}}\");\r",
-                          "\r",
-                          "// pm.collectionVariables.set(\"nonExistingFirstName\", randomFirstName);\r",
-                          "\r",
-                          "// pm.collectionVariables.set(\"nonExistingLastName\", randomLastName);"
+                          ""
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "aa84f2ac-7892-482c-a741-77b931fc9324",
                         "exec": [
                           "pm.test(\"Should return status code 400\", function () {\r",
                           "    pm.response.to.have.status(400);\r",
@@ -5887,8 +5818,7 @@
                           "// pm.collectionVariables.set(\"colAuthorId\", author.id);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -5921,7 +5851,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-16T14:18:49.000Z",
-                  "updatedAt": "2026-02-16T14:38:15.000Z",
+                  "updatedAt": "2026-02-21T17:24:20.000Z",
                   "uid": "2470668-a7c74052-cf37-4342-99af-c4acf94407fe"
                 },
                 {
@@ -5930,24 +5860,18 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "6a0cad94-106a-4b5c-b80e-98d4e62f3c20",
                         "exec": [
-                          "// const randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\");\r",
-                          "// const randomLastName = pm.variables.replaceIn(\"{{$randomLastName}}\");\r",
-                          "\r",
-                          "// pm.collectionVariables.set(\"nonExistingFirstName\", randomFirstName);\r",
-                          "\r",
-                          "// pm.collectionVariables.set(\"nonExistingLastName\", randomLastName);"
+                          ""
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "1f6c30b9-58a7-44dd-b71b-eb7e5d24543e",
                         "exec": [
                           "pm.test(\"Should return status code 400\", function () {\r",
                           "    pm.response.to.have.status(400);\r",
@@ -6034,8 +5958,7 @@
                           "// pm.collectionVariables.set(\"colAuthorId\", author.id);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -6068,7 +5991,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-16T14:18:49.000Z",
-                  "updatedAt": "2026-02-16T14:38:17.000Z",
+                  "updatedAt": "2026-02-21T17:24:29.000Z",
                   "uid": "2470668-42cd91e3-d393-4faf-b16f-e71ed3feee33"
                 },
                 {
@@ -6244,24 +6167,23 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "1a282b07-bca7-4fbb-953f-ac05c17d0611",
                         "exec": [
-                          "const randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\");\r",
-                          "const randomLastName = pm.variables.replaceIn(\"{{$randomLastName}}\");\r",
+                          "const randomFirstName = AuthorUtils.getRandomFirstName();\r",
+                          "const randomLastName = AuthorUtils.getRandomLastName();\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomFirstName\", randomFirstName);\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomFirstName\", randomLastName);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "898e9617-6a59-447d-81d3-3834764e1b29",
                         "exec": [
                           "pm.test(\"Should return status code 201\", function () {\r",
                           "    pm.response.to.have.status(201);\r",
@@ -6318,8 +6240,7 @@
                           "pm.collectionVariables.set(\"colAuthorId\", author.id);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -6351,7 +6272,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-15T15:42:10.000Z",
-                  "updatedAt": "2026-02-16T15:20:42.000Z",
+                  "updatedAt": "2026-02-21T17:25:02.000Z",
                   "uid": "2470668-37f88131-b82f-4c98-b308-848f2d11b4c9"
                 },
                 {
@@ -6360,22 +6281,21 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "8269335d-6536-479a-b0ea-c4e7b3bb271f",
+                        "id": "35ce1bc6-f68f-4c23-83df-686859fd60f6",
                         "exec": [
-                          "const randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\");\r",
+                          "const randomFirstName = AuthorUtils.getRandomFirstName();\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomFirstName\", randomFirstName);\r",
                           ""
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "f899d20e-3594-4a95-a38a-5ec5925f80fd",
+                        "id": "0ce27367-a881-4011-a3c9-caaecc7e4c78",
                         "exec": [
                           "pm.test(\"Should return status code 200\", function () {\r",
                           "    pm.response.to.have.status(200);\r",
@@ -6425,8 +6345,7 @@
                           "});"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -6459,7 +6378,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-15T15:42:14.000Z",
-                  "updatedAt": "2026-02-16T15:20:42.000Z",
+                  "updatedAt": "2026-02-21T17:25:19.000Z",
                   "uid": "2470668-31a7b0a2-8778-47d8-9954-6330f15f1165"
                 },
                 {
@@ -6468,21 +6387,20 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "8269335d-6536-479a-b0ea-c4e7b3bb271f",
+                        "id": "c25ddde0-148b-4507-8360-159f3821a98a",
                         "exec": [
-                          "const randomLastName = pm.variables.replaceIn(\"{{$randomLastName}}\");\r",
+                          "const randomLastName = AuthorUtils.getRandomLastName();\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomLastName\", randomLastName);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "f899d20e-3594-4a95-a38a-5ec5925f80fd",
+                        "id": "2291950c-b642-4abc-8e46-fe153e0602e9",
                         "exec": [
                           "pm.test(\"Should return status code 200\", function () {\r",
                           "    pm.response.to.have.status(200);\r",
@@ -6532,8 +6450,7 @@
                           "});"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -6566,7 +6483,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-15T15:42:51.000Z",
-                  "updatedAt": "2026-02-16T15:20:42.000Z",
+                  "updatedAt": "2026-02-21T17:25:31.000Z",
                   "uid": "2470668-7c134a8a-44c6-402e-96e9-93455e6bfe0f"
                 },
                 {
@@ -6575,25 +6492,22 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "8269335d-6536-479a-b0ea-c4e7b3bb271f",
+                        "id": "a452250c-75bf-4d0d-8696-b6e8f75b5fdb",
                         "exec": [
-                          "const randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\");\r",
+                          "const randomFirstName = AuthorUtils.getRandomFirstName();\r",
+                          "const randomLastName = AuthorUtils.getRandomLastName();\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomFirstName\", randomFirstName);\r",
-                          "\r",
-                          "const randomLastName = pm.variables.replaceIn(\"{{$randomLastName}}\");\r",
-                          "\r",
                           "pm.collectionVariables.set(\"colRandomLastName\", randomLastName);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "f899d20e-3594-4a95-a38a-5ec5925f80fd",
+                        "id": "f72a783f-8dcf-46ff-aa46-663af2516c86",
                         "exec": [
                           "pm.test(\"Should return status code 200\", function () {\r",
                           "    pm.response.to.have.status(200);\r",
@@ -6643,8 +6557,7 @@
                           "});"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -6677,7 +6590,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-15T15:50:51.000Z",
-                  "updatedAt": "2026-02-16T15:20:42.000Z",
+                  "updatedAt": "2026-02-21T17:25:47.000Z",
                   "uid": "2470668-673acdcc-e519-4195-b2e7-458e82ed0c12"
                 },
                 {
@@ -6786,111 +6699,6 @@
                   "uid": "2470668-d95636b4-ce13-428f-b767-9f3b667a438d"
                 },
                 {
-                  "name": "partial edit author - missing firstName & lastName Copy",
-                  "event": [
-                    {
-                      "listen": "prerequest",
-                      "script": {
-                        "id": "8269335d-6536-479a-b0ea-c4e7b3bb271f",
-                        "exec": [
-                          ""
-                        ],
-                        "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
-                      }
-                    },
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "f899d20e-3594-4a95-a38a-5ec5925f80fd",
-                        "exec": [
-                          "pm.test(\"Should return status code 200\", function () {\r",
-                          "    pm.response.to.have.status(200);\r",
-                          "});\r",
-                          "\r",
-                          "pm.test(\"Should resturn response in JSON format\", function () {\r",
-                          "    pm.response.to.be.json;\r",
-                          "});\r",
-                          "\r",
-                          "const author = pm.response.json();\r",
-                          "\r",
-                          "pm.test(\"Should resturn response with correct structure\", function () {\r",
-                          "    pm.expect(author).to.have.all.keys('id', 'firstName', 'lastName');\r",
-                          "});\r",
-                          "\r",
-                          "pm.test(\"Should return property id in response\", function () {\r",
-                          "    pm.expect(author).to.have.property('id');\r",
-                          "    pm.expect(author.id).to.be.a('number');\r",
-                          "});\r",
-                          "\r",
-                          "pm.test(\"Should return non-empty fields\", function () {\r",
-                          "    pm.expect(author.firstName).to.not.be.empty;\r",
-                          "    pm.expect(author.lastName).to.not.be.empty;\r",
-                          "});\r",
-                          "\r",
-                          "pm.test(\"Should have firstName equal to Joshua\", function () {\r",
-                          "    const authorFirstName = pm.collectionVariables.get(\"colRandomFirstName\");\r",
-                          "    pm.expect(author.firstName).to.equal(authorFirstName);\r",
-                          "});\r",
-                          "\r",
-                          "\r",
-                          "pm.test(\"Should have lastName equal to Bloch\", function () {\r",
-                          "    const authorLastName = pm.collectionVariables.get(\"colRandomLastName\");\r",
-                          "    pm.expect(author.lastName).to.equal(authorLastName);\r",
-                          "});\r",
-                          "\r",
-                          "pm.test(\"Should return fields with valid length\", function () {\r",
-                          "    pm.expect(author.firstName.length).to.be.at.least(3);\r",
-                          "    pm.expect(author.firstName.length).to.be.at.most(128);\r",
-                          "    pm.expect(author.lastName.length).to.be.at.least(3);\r",
-                          "    pm.expect(author.lastName.length).to.be.at.most(128);\r",
-                          "});\r",
-                          "\r",
-                          "pm.test(\"Should have firstName and lastName of type string\", function () {\r",
-                          "    pm.expect(author.firstName).to.be.a('string');\r",
-                          "    pm.expect(author.lastName).to.be.a('string');\r",
-                          "});"
-                        ],
-                        "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
-                      }
-                    }
-                  ],
-                  "id": "069d409a-a754-4c9a-810c-d3f5bbcc7141",
-                  "protocolProfileBehavior": {
-                    "disableBodyPruning": true
-                  },
-                  "request": {
-                    "method": "PATCH",
-                    "header": [],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{}",
-                      "options": {
-                        "raw": {
-                          "language": "json"
-                        }
-                      }
-                    },
-                    "url": {
-                      "raw": "{{bookStore}}/authors/{{colAuthorId}}",
-                      "host": [
-                        "{{bookStore}}"
-                      ],
-                      "path": [
-                        "authors",
-                        "{{colAuthorId}}"
-                      ]
-                    }
-                  },
-                  "response": [],
-                  "createdAt": "2026-02-16T16:10:10.000Z",
-                  "updatedAt": "2026-02-16T16:10:10.000Z",
-                  "uid": "2470668-069d409a-a754-4c9a-810c-d3f5bbcc7141"
-                },
-                {
                   "name": "delete author",
                   "event": [
                     {
@@ -6955,7 +6763,7 @@
               ],
               "id": "bda314d9-23a7-46ea-bd1d-c38a9432c4c1",
               "createdAt": "2026-02-16T15:20:26.000Z",
-              "updatedAt": "2026-02-16T16:10:10.000Z",
+              "updatedAt": "2026-02-21T17:26:08.000Z",
               "uid": "2470668-bda314d9-23a7-46ea-bd1d-c38a9432c4c1"
             },
             {
@@ -6967,24 +6775,23 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "78f653a2-94fe-4f52-b1aa-ea9fe6b9db0d",
                         "exec": [
-                          "const randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\");\r",
-                          "const randomLastName = pm.variables.replaceIn(\"{{$randomLastName}}\");\r",
+                          "const randomFirstName = AuthorUtils.getRandomFirstName();\r",
+                          "const randomLastName = AuthorUtils.getRandomLastName();\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomFirstName\", randomFirstName);\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomFirstName\", randomLastName);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "f4128176-06bb-4df6-b2b1-91301ce8dc4e",
                         "exec": [
                           "pm.test(\"Should return status code 201\", function () {\r",
                           "    pm.response.to.have.status(201);\r",
@@ -7041,8 +6848,7 @@
                           "pm.collectionVariables.set(\"colAuthorId\", author.id);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -7074,7 +6880,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-16T15:21:03.000Z",
-                  "updatedAt": "2026-02-16T15:21:10.000Z",
+                  "updatedAt": "2026-02-21T17:26:27.000Z",
                   "uid": "2470668-b12bd3d6-0ee6-412c-9c68-1980b6e457d3"
                 },
                 {
@@ -7571,24 +7377,23 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "75aef3a6-ab32-4cca-a370-8b129975c469",
                         "exec": [
-                          "const randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\");\r",
-                          "const randomLastName = pm.variables.replaceIn(\"{{$randomLastName}}\");\r",
+                          "const randomFirstName = AuthorUtils.getRandomFirstName();\r",
+                          "const randomLastName = AuthorUtils.getRandomLastName();\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomFirstName\", randomFirstName);\r",
                           "\r",
                           "pm.collectionVariables.set(\"colRandomFirstName\", randomLastName);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "b5422917-aea5-43be-bad3-888f203b4893",
                         "exec": [
                           "pm.test(\"Should return status code 201\", function () {\r",
                           "    pm.response.to.have.status(201);\r",
@@ -7645,8 +7450,7 @@
                           "pm.collectionVariables.set(\"colAuthorId\", author.id);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -7678,7 +7482,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-16T16:03:04.000Z",
-                  "updatedAt": "2026-02-18T20:23:38.000Z",
+                  "updatedAt": "2026-02-21T17:27:06.000Z",
                   "uid": "2470668-92691c4e-18d1-4601-8e47-187a390c66f4"
                 },
                 {
@@ -7829,21 +7633,18 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "78bb4266-7990-452a-9046-06aa89753d35",
                         "exec": [
-                          "// const randomLastName = pm.variables.replaceIn(\"{{$randomLastName}}\");\r",
-                          "\r",
-                          "// pm.collectionVariables.set(\"colRandomLastName\", randomLastName);"
+                          ""
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "a44c88f7-0663-4283-bece-0029f12f03b1",
                         "exec": [
                           "pm.test(\"Should return status code 400\", function () {\r",
                           "    pm.response.to.have.status(400);\r",
@@ -7930,8 +7731,7 @@
                           "// pm.collectionVariables.set(\"colAuthorId\", author.id);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -7964,7 +7764,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-16T16:03:51.000Z",
-                  "updatedAt": "2026-02-16T16:06:06.000Z",
+                  "updatedAt": "2026-02-21T17:27:22.000Z",
                   "uid": "2470668-dc4a3b68-27ca-4f87-893a-013aa6dd1990"
                 },
                 {
@@ -7973,21 +7773,18 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "94397596-5a64-4519-aeeb-943f4f9e4a35",
                         "exec": [
-                          "// const randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\");\r",
-                          "\r",
-                          "// pm.collectionVariables.set(\"colRandomFirstName\", randomFirstName);"
+                          ""
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "cda6a864-9e4e-4254-8ded-9c5ab0cf42f1",
                         "exec": [
                           "pm.test(\"Should return status code 400\", function () {\r",
                           "    pm.response.to.have.status(400);\r",
@@ -8074,8 +7871,7 @@
                           "// pm.collectionVariables.set(\"colAuthorId\", author.id);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -8108,7 +7904,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-16T16:03:51.000Z",
-                  "updatedAt": "2026-02-16T16:06:28.000Z",
+                  "updatedAt": "2026-02-21T17:27:33.000Z",
                   "uid": "2470668-2f503dfb-afbc-413b-b45d-ad46a6459c65"
                 },
                 {
@@ -8685,24 +8481,18 @@
                     {
                       "listen": "prerequest",
                       "script": {
-                        "id": "4248847b-e4d9-4342-8575-b0f6c11b3afd",
+                        "id": "2efb8926-3eab-44bb-8087-c1a92e1ea9af",
                         "exec": [
-                          "// const randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\");\r",
-                          "// const randomLastName = pm.variables.replaceIn(\"{{$randomLastName}}\");\r",
-                          "\r",
-                          "// pm.collectionVariables.set(\"nonExistingFirstName\", randomFirstName);\r",
-                          "\r",
-                          "// pm.collectionVariables.set(\"nonExistingLastName\", randomLastName);"
+                          ""
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     },
                     {
                       "listen": "test",
                       "script": {
-                        "id": "1b4f5ece-2cfc-43d8-bc58-871f62b66b7a",
+                        "id": "ca2d59f0-c71f-4437-92ee-05d2ea1203cd",
                         "exec": [
                           "pm.test(\"Should return status code 400\", function () {\r",
                           "    pm.response.to.have.status(400);\r",
@@ -8789,8 +8579,7 @@
                           "// pm.collectionVariables.set(\"colAuthorId\", author.id);"
                         ],
                         "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
+                        "packages": {}
                       }
                     }
                   ],
@@ -8823,7 +8612,7 @@
                   },
                   "response": [],
                   "createdAt": "2026-02-16T16:10:10.000Z",
-                  "updatedAt": "2026-02-16T19:52:04.000Z",
+                  "updatedAt": "2026-02-21T17:28:07.000Z",
                   "uid": "2470668-a60a25b6-fa01-4f13-8faa-497131a604ac"
                 },
                 {
@@ -8998,25 +8787,26 @@
     {
       "listen": "prerequest",
       "script": {
-        "id": "eade5bc0-0464-4880-b2a5-679adffd3dd3",
-        "type": "text/javascript",
-        "packages": {},
-        "requests": {},
+        "id": "90863254-fb66-43cf-99db-d057b8cf8ac2",
         "exec": [
-          ""
-        ]
-      }
-    },
-    {
-      "listen": "test",
-      "script": {
-        "id": "cc47924a-0b73-4f16-a163-d1e3eb69b622",
+          "AuthorUtils = {\r",
+          "    sanitizeName(name) {\r",
+          "        return (name || \"\").replace(/'/g, \"\").trim();\r",
+          "    },\r",
+          "\r",
+          "    getRandomFirstName() {\r",
+          "        const rawFirstName = pm.variables.replaceIn('{{$randomFirstName}}');\r",
+          "        return this.sanitizeName(rawFirstName);\r",
+          "    },\r",
+          "\r",
+          "    getRandomLastName() {\r",
+          "        const rawLastName = pm.variables.replaceIn('{{$randomLastName}}');\r",
+          "        return this.sanitizeName(rawLastName);\r",
+          "    }\r",
+          "}"
+        ],
         "type": "text/javascript",
-        "packages": {},
-        "requests": {},
-        "exec": [
-          ""
-        ]
+        "packages": {}
       }
     }
   ],
