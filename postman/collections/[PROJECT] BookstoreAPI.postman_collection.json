@@ -4,7 +4,7 @@
     "name": "[PROJECT] BookstoreAPI",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "createdAt": "2026-02-13T10:34:19.000Z",
-    "updatedAt": "2026-02-23T10:25:18.000Z",
+    "updatedAt": "2026-02-24T09:49:50.000Z",
     "lastUpdatedBy": "2470668",
     "uid": "2470668-40365cb8-20ff-4a56-b033-ab6725f09595"
   },
@@ -9093,11 +9093,538 @@
               "createdAt": "2026-02-23T18:16:25.000Z",
               "updatedAt": "2026-02-23T18:22:10.000Z",
               "uid": "2470668-fbd16c07-a268-4bd7-b766-86d0c16c40ce"
+            },
+            {
+              "name": "search book by title",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "3fcdc6d1-a949-48bf-bd0b-308bbaba822e",
+                    "exec": [
+                      "pm.test('Should return 200 OK', function () {\r",
+                      "  pm.response.to.have.status(200);\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should return response in JSON format', function () {\r",
+                      "  pm.response.to.be.json;\r",
+                      "});\r",
+                      "\r",
+                      "const responseJson = pm.response.json();\r",
+                      "\r",
+                      "pm.test('Should return an array of books', function () {\r",
+                      "  pm.expect(responseJson).to.be.an('array');\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should return a non-empty list of books', function () {\r",
+                      "  pm.expect(responseJson).to.have.length.greaterThan(0);\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should return books matching the search keyword in their title', function () {\r",
+                      "  responseJson.forEach(function (book) {\r",
+                      "    pm.expect(book.title.toLowerCase()).to.include('java');\r",
+                      "  });\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should return books with required properties', function () {\r",
+                      "  responseJson.forEach(function (book) {\r",
+                      "    pm.expect(book).to.have.property('id');\r",
+                      "    pm.expect(book).to.have.property('title');\r",
+                      "    pm.expect(book).to.have.property('year');\r",
+                      "    pm.expect(book).to.have.property('price');\r",
+                      "    pm.expect(book).to.have.property('coverUrl');\r",
+                      "    pm.expect(book).to.have.property('available');\r",
+                      "    pm.expect(book).to.have.property('authors');\r",
+                      "  });\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should return books with valid property types', function () {\r",
+                      "  responseJson.forEach(function (book) {\r",
+                      "    pm.expect(book.id).to.be.a('number');\r",
+                      "    pm.expect(book.title).to.be.a('string');\r",
+                      "    pm.expect(book.year).to.be.a('number');\r",
+                      "    pm.expect(book.price).to.be.a('number');\r",
+                      "    pm.expect(book.coverUrl).to.be.a('string');\r",
+                      "    pm.expect(book.available).to.be.a('number');\r",
+                      "    pm.expect(book.authors).to.be.an('array');\r",
+                      "  });\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should return books with at least one author', function () {\r",
+                      "  responseJson.forEach(function (book) {\r",
+                      "    pm.expect(book.authors).to.have.length.greaterThan(0);\r",
+                      "  });\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should return authors with firstName and lastName properties', function () {\r",
+                      "  responseJson.forEach(function (book) {\r",
+                      "    book.authors.forEach(function (author) {\r",
+                      "      pm.expect(author).to.have.property('firstName').that.is.a('string');\r",
+                      "      pm.expect(author).to.have.property('lastName').that.is.a('string');\r",
+                      "    });\r",
+                      "  });\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should return books with a positive price', function () {\r",
+                      "  responseJson.forEach(function (book) {\r",
+                      "    pm.expect(book.price).to.be.greaterThan(0);\r",
+                      "  });\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should return books with a positive year', function () {\r",
+                      "  responseJson.forEach(function (book) {\r",
+                      "    pm.expect(book.year).to.be.greaterThan(0);\r",
+                      "  });\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should return books with a non-negative available count', function () {\r",
+                      "  responseJson.forEach(function (book) {\r",
+                      "    pm.expect(book.available).to.be.at.least(0);\r",
+                      "  });\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should return books with a valid coverUrl format', function () {\r",
+                      "  responseJson.forEach(function (book) {\r",
+                      "    pm.expect(book.coverUrl).to.match(/^https?:\\/\\/.+/);\r",
+                      "  });\r",
+                      "});\r",
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {}
+                  }
+                }
+              ],
+              "id": "c6f31987-850f-4ffb-b6dd-19b5539dbf59",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{bookStore}}/books?title=Java",
+                  "host": [
+                    "{{bookStore}}"
+                  ],
+                  "path": [
+                    "books"
+                  ],
+                  "query": [
+                    {
+                      "key": "title",
+                      "value": "Java"
+                    }
+                  ]
+                }
+              },
+              "response": [],
+              "createdAt": "2026-02-24T09:09:16.000Z",
+              "updatedAt": "2026-02-24T09:24:34.000Z",
+              "uid": "2470668-c6f31987-850f-4ffb-b6dd-19b5539dbf59"
+            },
+            {
+              "name": "search book by author & title",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "944b3aab-b38d-4d9b-9d34-3d281cab30d7",
+                    "exec": [
+                      "pm.test('Should return 200 OK', function () {\r",
+                      "  pm.response.to.have.status(200);\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should return response in JSON format', function () {\r",
+                      "  pm.response.to.be.json;\r",
+                      "});\r",
+                      "\r",
+                      "const responseJson = pm.response.json();\r",
+                      "\r",
+                      "pm.test('Should return an array', function () {\r",
+                      "  pm.expect(responseJson).to.be.an('array');\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should return a non-empty array of books', function () {\r",
+                      "  pm.expect(responseJson).to.be.an('array').that.is.not.empty;\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should contain books with all required schema properties', function () {\r",
+                      "  responseJson.forEach(function (book) {\r",
+                      "    pm.expect(book).to.have.property('id');\r",
+                      "    pm.expect(book).to.have.property('title');\r",
+                      "    pm.expect(book).to.have.property('year');\r",
+                      "    pm.expect(book).to.have.property('price');\r",
+                      "    pm.expect(book).to.have.property('coverUrl');\r",
+                      "    pm.expect(book).to.have.property('available');\r",
+                      "    pm.expect(book).to.have.property('authors');\r",
+                      "  });\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should have id as a number', function () {\r",
+                      "  pm.expect(responseJson[0].id).to.be.a('number');\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should have title as a string containing search keyword', function () {\r",
+                      "  pm.expect(responseJson[0].title).to.be.a('string');\r",
+                      "  pm.expect(responseJson[0].title.toLowerCase()).to.include('design');\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should have year as a number', function () {\r",
+                      "  pm.expect(responseJson[0].year).to.be.a('number');\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should have price as a number', function () {\r",
+                      "  pm.expect(responseJson[0].price).to.be.a('number');\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should have coverUrl as a string', function () {\r",
+                      "  pm.expect(responseJson[0].coverUrl).to.be.a('string');\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should have available as a number', function () {\r",
+                      "  pm.expect(responseJson[0].available).to.be.a('number');\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should have a non-empty authors array', function () {\r",
+                      "  pm.expect(responseJson[0].authors).to.be.an('array').that.is.not.empty;\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should have authors with firstName and lastName as strings', function () {\r",
+                      "  responseJson[0].authors.forEach(function (author) {\r",
+                      "    pm.expect(author).to.have.property('firstName').that.is.a('string');\r",
+                      "    pm.expect(author).to.have.property('lastName').that.is.a('string');\r",
+                      "  });\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should contain an author matching the search query', function () {\r",
+                      "  const hasMatchingAuthor = responseJson[0].authors.some(function (author) {\r",
+                      "    return (\r",
+                      "      author.firstName.toLowerCase().includes('ralph') ||\r",
+                      "      author.lastName.toLowerCase().includes('ralph')\r",
+                      "    );\r",
+                      "  });\r",
+                      "  pm.expect(hasMatchingAuthor).to.be.true;\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should return response time below 3000ms', function () {\r",
+                      "  pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {}
+                  }
+                }
+              ],
+              "id": "59cc8b8c-c86a-49c9-b9d6-ab6e7a99fac1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{bookStore}}/books?title=Design&author=Ralph",
+                  "host": [
+                    "{{bookStore}}"
+                  ],
+                  "path": [
+                    "books"
+                  ],
+                  "query": [
+                    {
+                      "key": "title",
+                      "value": "Design"
+                    },
+                    {
+                      "key": "author",
+                      "value": "Ralph"
+                    }
+                  ]
+                }
+              },
+              "response": [],
+              "createdAt": "2026-02-24T10:15:31.000Z",
+              "updatedAt": "2026-02-24T10:23:35.000Z",
+              "uid": "2470668-59cc8b8c-c86a-49c9-b9d6-ab6e7a99fac1"
+            },
+            {
+              "name": "search book by non existing author",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "12b673f9-169f-414c-8bb8-205730b2ba15",
+                    "exec": [
+                      "pm.test('Should return 200 OK', function () {\r",
+                      "  pm.response.to.have.status(200);\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should return response in JSON format', function () {\r",
+                      "  pm.response.to.be.json;\r",
+                      "});\r",
+                      "\r",
+                      "const responseJson = pm.response.json();\r",
+                      "\r",
+                      "pm.test('Should return an array', function () {\r",
+                      "  pm.expect(responseJson).to.be.an('array');\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should return an empty array for non-existing author', function () {\r",
+                      "  pm.expect(responseJson).to.have.lengthOf(0);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {}
+                  }
+                }
+              ],
+              "id": "36bd63ad-e199-4642-8a06-b4bf7c3aa95d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{bookStore}}/books?author={{nonExistingAuthorLastName}}",
+                  "host": [
+                    "{{bookStore}}"
+                  ],
+                  "path": [
+                    "books"
+                  ],
+                  "query": [
+                    {
+                      "key": "author",
+                      "value": "{{nonExistingAuthorLastName}}",
+                      "type": "text",
+                      "id": 0
+                    }
+                  ]
+                }
+              },
+              "response": [],
+              "createdAt": "2026-02-24T09:40:53.000Z",
+              "updatedAt": "2026-02-24T10:15:53.000Z",
+              "uid": "2470668-36bd63ad-e199-4642-8a06-b4bf7c3aa95d"
+            },
+            {
+              "name": "search book by non existing title",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "d50221a4-d0b4-4c0e-9b93-48690968b082",
+                    "exec": [
+                      "pm.test('Should return 200 OK', function () {\r",
+                      "  pm.response.to.have.status(200);\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should return response in JSON format', function () {\r",
+                      "  pm.response.to.be.json;\r",
+                      "});\r",
+                      "\r",
+                      "const responseJson = pm.response.json();\r",
+                      "\r",
+                      "pm.test('Should return an array', function () {\r",
+                      "  pm.expect(responseJson).to.be.an('array');\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should return an empty array for non-existing author', function () {\r",
+                      "  pm.expect(responseJson).to.have.lengthOf(0);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {}
+                  }
+                }
+              ],
+              "id": "e9502b51-8593-48a6-8254-da9feba599f6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{bookStore}}/books?title={{colNonExistingTitle}}",
+                  "host": [
+                    "{{bookStore}}"
+                  ],
+                  "path": [
+                    "books"
+                  ],
+                  "query": [
+                    {
+                      "key": "title",
+                      "value": "{{colNonExistingTitle}}"
+                    }
+                  ]
+                }
+              },
+              "response": [],
+              "createdAt": "2026-02-24T09:46:39.000Z",
+              "updatedAt": "2026-02-24T10:15:59.000Z",
+              "uid": "2470668-e9502b51-8593-48a6-8254-da9feba599f6"
+            },
+            {
+              "name": "read book by id",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "730cf6ce-e050-4039-9185-7341fb2b783e",
+                    "exec": [
+                      "pm.test('Should return 200 OK', function () {\r",
+                      "  pm.response.to.have.status(200);\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should return response in JSON format', function () {\r",
+                      "  pm.response.to.be.json;\r",
+                      "});\r",
+                      "\r",
+                      "const responseJson = pm.response.json();\r",
+                      "\r",
+                      "pm.test('Should have all required properties with correct types and values', function () {\r",
+                      "  pm.expect(responseJson.id).to.be.a('number');\r",
+                      "  pm.expect(responseJson.title).to.be.a('string').and.to.not.be.empty;\r",
+                      "  pm.expect(responseJson.year).to.be.a('number');\r",
+                      "  pm.expect(responseJson.price).to.be.a('number').and.to.be.above(0);\r",
+                      "  pm.expect(responseJson.coverId).to.be.a('number');\r",
+                      "  pm.expect(responseJson.available).to.be.a('number').and.to.be.at.least(0);\r",
+                      "  pm.expect(responseJson.authors).to.be.an('array').and.to.have.length.above(0);\r",
+                      "\r",
+                      "  responseJson.authors.forEach(function (author) {\r",
+                      "    pm.expect(author.id).to.be.a('number');\r",
+                      "    pm.expect(author.firstName).to.be.a('string').and.to.not.be.empty;\r",
+                      "    pm.expect(author.lastName).to.be.a('string').and.to.not.be.empty;\r",
+                      "  });\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should have id greater than 0', function () {\r",
+                      "  pm.expect(responseJson.id).to.be.above(0);\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should have year greater than 1000', function () {\r",
+                      "  pm.expect(responseJson.year).to.be.above(1000);\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should have price within allowed range (0.01 - 1000)', function () {\r",
+                      "  pm.expect(responseJson.price).to.be.at.least(0.01);\r",
+                      "  pm.expect(responseJson.price).to.be.at.most(1000);\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should have available within allowed range (0 - 10000)', function () {\r",
+                      "  pm.expect(responseJson.available).to.be.at.least(0);\r",
+                      "  pm.expect(responseJson.available).to.be.at.most(10000);\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should have price with at most 2 decimal places', function () {\r",
+                      "  const decimalPlaces = (responseJson.price.toString().split('.')[1] || '').length;\r",
+                      "  pm.expect(decimalPlaces).to.be.at.most(2);\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should contain only expected properties', function () {\r",
+                      "  const allowedKeys = ['id', 'title', 'year', 'price', 'coverId', 'available', 'authors'];\r",
+                      "  Object.keys(responseJson).forEach(function (key) {\r",
+                      "    pm.expect(allowedKeys).to.include(key);\r",
+                      "  });\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should have authors with unique ids', function () {\r",
+                      "  const authorIds = responseJson.authors.map(function (author) { return author.id; });\r",
+                      "  const uniqueIds = [...new Set(authorIds)];\r",
+                      "  pm.expect(authorIds.length).to.equal(uniqueIds.length);\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should return Content-Type with application/json', function () {\r",
+                      "  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should respond within 2000ms', function () {\r",
+                      "  pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+                      "});\r",
+                      "\r",
+                      "pm.test('Should return book matching the requested id', function () {\r",
+                      "  const urlParts = pm.request.url.toString().split('/');\r",
+                      "  const requestedId = parseInt(urlParts[urlParts.length - 1], 10);\r",
+                      "  pm.expect(responseJson.id).to.equal(requestedId);\r",
+                      "});\r",
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {}
+                  }
+                }
+              ],
+              "id": "cdaa9301-45d6-4f1f-a49d-fd9799ff370f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{bookStore}}/books/{{existingBookId}}",
+                  "host": [
+                    "{{bookStore}}"
+                  ],
+                  "path": [
+                    "books",
+                    "{{existingBookId}}"
+                  ]
+                }
+              },
+              "response": [],
+              "createdAt": "2026-02-24T09:48:23.000Z",
+              "updatedAt": "2026-02-24T10:30:41.000Z",
+              "uid": "2470668-cdaa9301-45d6-4f1f-a49d-fd9799ff370f"
+            },
+            {
+              "name": "read book by non existing id",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "7d346dcf-1049-43ba-bfb2-8064c3fe6c86",
+                    "exec": [
+                      "pm.test('Should return 404 Not Found', function () {\r",
+                      "  pm.response.to.have.status(404);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {}
+                  }
+                }
+              ],
+              "id": "d0ff4844-f562-4f4b-a63c-27e1aa11c1ed",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{bookStore}}/books/{{nonExistingBookId}}",
+                  "host": [
+                    "{{bookStore}}"
+                  ],
+                  "path": [
+                    "books",
+                    "{{nonExistingBookId}}"
+                  ]
+                }
+              },
+              "response": [],
+              "createdAt": "2026-02-24T10:07:41.000Z",
+              "updatedAt": "2026-02-24T10:30:47.000Z",
+              "uid": "2470668-d0ff4844-f562-4f4b-a63c-27e1aa11c1ed"
             }
           ],
           "id": "560db0f9-48bc-4359-bc35-c8e99f6c8514",
           "createdAt": "2026-02-23T10:25:36.000Z",
-          "updatedAt": "2026-02-23T18:23:21.000Z",
+          "updatedAt": "2026-02-24T10:30:47.000Z",
           "uid": "2470668-560db0f9-48bc-4359-bc35-c8e99f6c8514"
         }
       ],
@@ -9178,6 +9705,21 @@
     {
       "key": "colFirstNameMax",
       "value": "Lorem ipsum dolor sit ameti consectetur adipiscingo Quisque consequat orc fermentum nisi feugiatj laoreet lacinia magna aliquetl"
+    },
+    {
+      "key": "colNonExistingTitle",
+      "value": "JavaJavaJava",
+      "type": "string"
+    },
+    {
+      "key": "nonExistingBookId",
+      "value": "999999",
+      "type": "string"
+    },
+    {
+      "key": "existingBookId",
+      "value": "18",
+      "type": "string"
     }
   ]
 }
