@@ -4,7 +4,7 @@
     "name": "[PROJECT] BookstoreAPI",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "createdAt": "2026-02-13T10:34:19.000Z",
-    "updatedAt": "2026-02-24T09:49:50.000Z",
+    "updatedAt": "2026-02-26T12:05:10.000Z",
     "lastUpdatedBy": "2470668",
     "uid": "2470668-40365cb8-20ff-4a56-b033-ab6725f09595"
   },
@@ -9620,17 +9620,161 @@
               "createdAt": "2026-02-24T10:07:41.000Z",
               "updatedAt": "2026-02-24T10:30:47.000Z",
               "uid": "2470668-d0ff4844-f562-4f4b-a63c-27e1aa11c1ed"
+            },
+            {
+              "name": "search book by title and author_MCP",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "f7152288-fb31-44eb-8820-f7f062264374",
+                    "exec": [
+                      "pm.test('Should return 200 OK', function () {",
+                      "  pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test('Should return response in JSON format', function () {",
+                      "  pm.response.to.be.json;",
+                      "});",
+                      "",
+                      "const responseJson = pm.response.json();",
+                      "",
+                      "pm.test('Should return an array', function () {",
+                      "  pm.expect(responseJson).to.be.an('array');",
+                      "});",
+                      "",
+                      "pm.test('Should return a non-empty array of books', function () {",
+                      "  pm.expect(responseJson).to.be.an('array').that.is.not.empty;",
+                      "});",
+                      "",
+                      "pm.test('Should return books with all required properties', function () {",
+                      "  responseJson.forEach(function (book) {",
+                      "    pm.expect(book).to.have.property('id');",
+                      "    pm.expect(book).to.have.property('title');",
+                      "    pm.expect(book).to.have.property('year');",
+                      "    pm.expect(book).to.have.property('price');",
+                      "    pm.expect(book).to.have.property('coverUrl');",
+                      "    pm.expect(book).to.have.property('available');",
+                      "    pm.expect(book).to.have.property('authors');",
+                      "  });",
+                      "});",
+                      "",
+                      "pm.test('Should return books with valid property types', function () {",
+                      "  responseJson.forEach(function (book) {",
+                      "    pm.expect(book.id).to.be.a('number');",
+                      "    pm.expect(book.title).to.be.a('string');",
+                      "    pm.expect(book.year).to.be.a('number');",
+                      "    pm.expect(book.price).to.be.a('number');",
+                      "    pm.expect(book.coverUrl).to.be.a('string');",
+                      "    pm.expect(book.available).to.be.a('number');",
+                      "    pm.expect(book.authors).to.be.an('array');",
+                      "  });",
+                      "});",
+                      "",
+                      "pm.test('Should return books with title matching the search keyword', function () {",
+                      "  const titleQuery = pm.request.url.query.get('title').toLowerCase();",
+                      "  responseJson.forEach(function (book) {",
+                      "    pm.expect(book.title.toLowerCase()).to.include(titleQuery);",
+                      "  });",
+                      "});",
+                      "",
+                      "pm.test('Should return books with at least one author matching the search keyword', function () {",
+                      "  const authorQuery = pm.request.url.query.get('author').toLowerCase();",
+                      "  responseJson.forEach(function (book) {",
+                      "    const hasMatchingAuthor = book.authors.some(function (author) {",
+                      "      return (",
+                      "        author.firstName.toLowerCase().includes(authorQuery) ||",
+                      "        author.lastName.toLowerCase().includes(authorQuery)",
+                      "      );",
+                      "    });",
+                      "    pm.expect(hasMatchingAuthor).to.be.true;",
+                      "  });",
+                      "});",
+                      "",
+                      "pm.test('Should return books with non-empty authors array', function () {",
+                      "  responseJson.forEach(function (book) {",
+                      "    pm.expect(book.authors).to.be.an('array').that.is.not.empty;",
+                      "  });",
+                      "});",
+                      "",
+                      "pm.test('Should return books where each author has firstName and lastName', function () {",
+                      "  responseJson.forEach(function (book) {",
+                      "    book.authors.forEach(function (author) {",
+                      "      pm.expect(author).to.have.property('firstName').that.is.a('string').and.not.empty;",
+                      "      pm.expect(author).to.have.property('lastName').that.is.a('string').and.not.empty;",
+                      "    });",
+                      "  });",
+                      "});",
+                      "",
+                      "pm.test('Should return books with positive price', function () {",
+                      "  responseJson.forEach(function (book) {",
+                      "    pm.expect(book.price).to.be.above(0);",
+                      "  });",
+                      "});",
+                      "",
+                      "pm.test('Should return books with non-negative available count', function () {",
+                      "  responseJson.forEach(function (book) {",
+                      "    pm.expect(book.available).to.be.at.least(0);",
+                      "  });",
+                      "});",
+                      "",
+                      "pm.test('Should return books with valid coverUrl format', function () {",
+                      "  responseJson.forEach(function (book) {",
+                      "    pm.expect(book.coverUrl).to.match(/^https?:\\/\\/.+/);",
+                      "  });",
+                      "});",
+                      "",
+                      "pm.test('Should return response within acceptable time', function () {",
+                      "  pm.expect(pm.response.responseTime).to.be.below(3000);",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {}
+                  }
+                }
+              ],
+              "id": "f780adf9-ea78-55b9-eb2a-74adc62901d4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{bookStore}}/books?title=Java&author=Bloch",
+                  "host": [
+                    "{{bookStore}}"
+                  ],
+                  "path": [
+                    "books"
+                  ],
+                  "query": [
+                    {
+                      "key": "title",
+                      "value": "Java"
+                    },
+                    {
+                      "key": "author",
+                      "value": "Bloch"
+                    }
+                  ]
+                }
+              },
+              "response": [],
+              "createdAt": "2026-02-26T11:05:53.000Z",
+              "updatedAt": "2026-02-26T12:02:03.000Z",
+              "uid": "2470668-f780adf9-ea78-55b9-eb2a-74adc62901d4"
             }
           ],
           "id": "560db0f9-48bc-4359-bc35-c8e99f6c8514",
           "createdAt": "2026-02-23T10:25:36.000Z",
-          "updatedAt": "2026-02-24T10:30:47.000Z",
+          "updatedAt": "2026-02-26T11:05:53.000Z",
           "uid": "2470668-560db0f9-48bc-4359-bc35-c8e99f6c8514"
         }
       ],
       "id": "2adcd294-f5d1-4545-a06e-5c315d719792",
       "createdAt": "2026-02-23T10:25:18.000Z",
-      "updatedAt": "2026-02-23T10:25:36.000Z",
+      "updatedAt": "2026-02-26T12:01:46.000Z",
       "uid": "2470668-2adcd294-f5d1-4545-a06e-5c315d719792"
     }
   ],
